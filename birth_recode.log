@@ -1,0 +1,66 @@
+---------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  /Users/anushreedeb/Desktop/MGPS/Data Management/Assignments/Final Paper/Data/DHS India 2015-
+> 16/DHS_Birth Recode/birth_recode.log
+  log type:  text
+ opened on:   5 Apr 2019, 10:31:46
+
+. 
+. gen age = v008 - b3
+
+. 
+. gen child_age=.
+(1,315,617 missing values generated)
+
+. replace child_age = age if child_age==. & b7==.
+(1,222,366 real changes made)
+
+. 
+. gen infant_mor=0 if child_age > =12 & child_age!=.
+(141,546 missing values generated)
+
+. replace infant_mor = 1000 if b7 <12 & b7!=.
+(66,158 real changes made)
+
+. replace infant_mor = 0 if b7 > = 12 & b7! =.
+(27,093 real changes made)
+
+. 
+. gen child_mor=0 if child_age > = 60 & child_age!=.
+(340,994 missing values generated)
+
+. replace child_mor = 1000 if b7 <60 & b7!=.
+(82,338 real changes made)
+
+. replace child_mor = 0 if b7 > = 60 & b7! =.
+(10,913 real changes made)
+
+. 
+. tab infant_mor,m
+
+ infant_mor |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |  1,201,164       91.30       91.30
+       1000 |     66,158        5.03       96.33
+          . |     48,295        3.67      100.00
+------------+-----------------------------------
+      Total |  1,315,617      100.00
+
+. tab child_mor,m
+
+  child_mor |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |    985,536       74.91       74.91
+       1000 |     82,338        6.26       81.17
+          . |    247,743       18.83      100.00
+------------+-----------------------------------
+      Total |  1,315,617      100.00
+
+. 
+. log close
+      name:  <unnamed>
+       log:  /Users/anushreedeb/Desktop/MGPS/Data Management/Assignments/Final Paper/Data/DHS India 2015-
+> 16/DHS_Birth Recode/birth_recode.log
+  log type:  text
+ closed on:   5 Apr 2019, 10:31:51
+---------------------------------------------------------------------------------------------------------
